@@ -1,0 +1,26 @@
+nbaughn@ucsc.edu
+Nash Baughn
+CS 112 Spring Quarter 2017
+
+The program functions.pl can be used with a correctly formatted database to
+find the shortest possible path between two airports. Essentially, it is what
+airports can use to plan flights. There are two constraints for a possible path.
+In the Twilight Zone, a flight must takeoff and land within the same 24 hour
+day and each connecting flight must have at least a 30 minute layover time because 
+the TWZ is especially busy. 
+
+The user enters fly( Depart, Arrive ). where Depart is the departure airport and Arrive 
+is the final destination of the flight. The  database stores the airport location as
+degrees/minutes/seconds, however, in order to create the best flight paths, the Haversine
+formula has been implemented, therefore, the lat/long must be in radians. As far as the
+shortest overall path goes, the program takes the departure airport and runs all 
+possible flights until the shortest flight path has been found. At firs, the 24 flight 
+requirement seemed unnecessary, but without this constraint the code required to find 
+path would have been far more difficult to implement. With the constraint, each possible 
+flight path is followed until the flight path enters the next day. Without this my 
+program would run forever! 
+
+Finally the best_flight_path is printed. I wanted to print airport codes in uppercase,
+but for the life of me none of the predicates I found in the docs would work. The same
+thing happened for atom_length and string_length because I wanted to format the output
+like the example. Oh well...

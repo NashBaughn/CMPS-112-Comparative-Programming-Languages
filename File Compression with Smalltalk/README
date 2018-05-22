@@ -1,0 +1,41 @@
+nbaughn@ucsc.edu
+Nash Baughn
+CS 112 Sping Quarter 2017
+
+hzip.st operates on an input file based on the flags given at the command line
+
+-d Debug information is printed for the benefit of the application author.
+	Exact details are not specified.
+-t The compression algorithm is activated, and the decoding tree is printed
+	to the standard output. The output filename may not be specified.
+-c The input file is compressed and written to the output file, if specified, or
+	to the standard output, if not.
+-u The input file is assumed to be compressed, and is uncompressed, written
+	to the output file, if specified, or to the standard output, if not.
+ 
+________________________________________________________________________________
+
+-c
+	When -c is specified the input file is compressed using Huffman coding. The 
+	file is read and for each char read a frequency table is updated until EOF. 
+	The frequency table is implemented using the ZeroArray class provided in 
+	\examples. When EOF is reached the frequency table is iterate and for each 
+	non-zero value (zero meaning the character did not appear in the file) and using 
+	the Leaf class provided create a leaf that stores the character and the 
+	frequency. Push these leaf nodes onto the priority queue.
+
+	Remove the two smallest elements from the queue and create a new tree, that 
+	contains the combined count along with char (the tree just has leafs)
+
+	A binary tree can be used to create encoding for each of the characters with a 
+	freq of non zero. This encoding will be unique to each character due to the 
+	nature of a binary tree.
+
+-d
+	Reconstruct the Huffman decoding tree. Read one bit. If the bot is 0, then read 
+	the next 8 bits and create the byte, which results in a value between 0-255. If 
+	the resulting value is 0 and the next bit is a 1, then EOF has been reached. Push
+	this value onto the stack (EOF should be the last thing popped off the stack).
+
+	If the value is a 1, then pop the first subtree from the stack, then pop the 
+	zeroth subtree from the stack, and create another tree with these two subtrees as the children. Push this new tree back onto stack
