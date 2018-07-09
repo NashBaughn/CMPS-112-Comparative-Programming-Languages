@@ -1,8 +1,3 @@
-/* $Id: functions.pl,v 1.1 2012-12-04 22:20:42-08 - - $
- * Derek Frank, dmfrank@ucsc.edu
- * Assignment 5
- */
-
 /*
  * Prolog version of not.
  */
@@ -76,7 +71,7 @@ findpath( Curr, End, Visited, [[Curr, DepTime, ArrTime] | List],
     ArrTime is DepTime + DeltaTime,
     ArrTime < 24.0,
     findpath( End, End, [End | Visited], List, _).
-findpath( Curr, End, Visited, [[Curr, DepTime, ArrTime] | List],
+    findpath( Curr, End, Visited, [[Curr, DepTime, ArrTime] | List],
           DepTimeInHM ) :-
     flight( Curr, Next, DepTimeInHM ),
     not( member( Next, Visited ) ),
