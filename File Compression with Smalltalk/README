@@ -38,5 +38,5 @@ ________________________________________________________________________________
 	this value onto the stack (EOF should be the last thing popped off the stack).
 
 	If the value is a 1, then pop the first subtree from the stack, then pop the 
-	zeroth subtree from the stack, and create another tree with these two subtrees as the children. 
-	Push this new tree back onto stack
+	zeroth subtree from the stack, and create another tree with these two subtrees 
+	as the children. Push this new tree back onto stack
